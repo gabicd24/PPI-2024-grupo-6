@@ -1,3 +1,14 @@
+<?php
+session_start(); // Inicia a sessão
+
+// Verifica se o usuário está autenticado
+if (!isset($_SESSION['username'])) {
+    // Se não estiver autenticado, redireciona para a página de login
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Sisgna</title>
     <link rel="stylesheet" href="css/styles.css"> <!-- Caminho para o CSS -->
-
 </head>
 <body>
     <div class="container">
@@ -171,8 +181,15 @@
                                 <label>Nome:</label>
                                 <input type="text" name="nome" required><br>
                                 
-                                <label>Descrição:</label>
-                                <textarea name="descricao" required></textarea><br>
+                                <label>Tipo do Setor:</label>
+                                <select name="tipo_setor" required>
+                                    <option value="CAE">CAE</option>
+                                    <option value="CAI">CAI</option>
+                                    <!-- Adicione mais opções conforme necessário -->
+                                </select><br>
+                                
+                                <label>Senha:</label>
+                                <input type="password" name="senha" required><br>
                                 
                                 <button type="submit">Cadastrar Setor</button>
                             </form>
@@ -193,7 +210,7 @@
                                 <input type="text" name="nome" required><br>
                                 
                                 <label>Descrição:</label>
-                                <textarea name="descricao" required></textarea><br>
+                                <input type="text" name="descricao" required><br>
                                 
                                 <button type="submit">Cadastrar Curso</button>
                             </form>
