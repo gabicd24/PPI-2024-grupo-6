@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/08/2024 às 16:11
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 09-Set-2024 às 14:50
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `alunos`
+-- Estrutura da tabela `alunos`
 --
 
 CREATE TABLE `alunos` (
@@ -35,60 +35,61 @@ CREATE TABLE `alunos` (
   `matricula` varchar(20) NOT NULL,
   `turma_id` int(11) DEFAULT NULL,
   `foto` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `alunos`
+-- Extraindo dados da tabela `alunos`
 --
 
 INSERT INTO `alunos` (`id`, `nome`, `email`, `cpf`, `matricula`, `turma_id`, `foto`) VALUES
-(1, 'teste', 'a@hotmail.com', '452', '4545', 2, '1723162263_sapato.jfif');
+(1, 'Joao', 'joao@aluno.com', '1234566789', '1', 1, 'aluno1234566789.png');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cursos`
+-- Estrutura da tabela `cursos`
 --
 
 CREATE TABLE `cursos` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `descricao` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `cursos`
+-- Extraindo dados da tabela `cursos`
 --
 
 INSERT INTO `cursos` (`id`, `nome`, `descricao`) VALUES
-(4, 'Informática', 'George'),
-(5, 'Alimento', '.');
+(1, 'Informática', ''),
+(2, 'Administração', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `disciplinas`
+-- Estrutura da tabela `disciplinas`
 --
 
 CREATE TABLE `disciplinas` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `turma_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `disciplinas`
+-- Extraindo dados da tabela `disciplinas`
 --
 
 INSERT INTO `disciplinas` (`id`, `nome`, `turma_id`) VALUES
 (4, 'Matemática', 2),
 (5, 'Português', 3),
-(6, 'Geografia', 2);
+(6, 'Geografia', 2),
+(8, 'Matemática', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `password_resets`
+-- Estrutura da tabela `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -97,30 +98,19 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `expires` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `password_resets`
+-- Extraindo dados da tabela `password_resets`
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `expires`, `created_at`) VALUES
-(1, 'a@hotmail.com', '76656a274228381b9f72a9693c4795b9bcea02cc789ec8226028aae6d8e447b4c4a24f7fbd7aad984d252f669e3c53abfd66', '2024-08-18 03:28:56', '2024-08-18 00:28:56'),
-(2, 'a@hotmail.com', '34c98022e48cc4101b3ab699306a5112343b817b6ed63ba528218f24ea45a725d17c8ec1769a85d5a2bfcc44271a9af5dad9', '2024-08-18 03:29:00', '2024-08-18 00:29:00'),
-(3, 'a@hotmail.com', '2d9834ee268bed5cba3d18d1f9816b4f973d019342f6db56895f0223479c8fd82c086416da1cf7b2e1db944cfbab22ea712f', '2024-08-18 03:30:21', '2024-08-18 00:30:21'),
-(5, 'a@hotmail.com', '4afa90509247f08ae4108f392d3b3c66376e071cfda63ff0bc6fdc5d2085d68af4435c2a9f18efcbdbc4b9a355baeb3c9ddc', '2024-08-18 03:41:16', '2024-08-18 00:41:16'),
-(8, 'lorenzorpiovesan@hotmail.com', '34a273a89ebc779269c9f4a7b46cdb2106a8d7cb8f70c74b226de59077c0d07209241b4df6d13e36a10b754d615154c3dac4', '2024-08-18 03:46:19', '2024-08-18 00:46:19'),
-(10, 'lorenzorpiovesan@hotmail.com', '6f2d7a0eeed8f257b81ddbd5bfaa421cb6aaed087fb25d059b0ab2f2d53534f274026bea1bba3af94c9ca7cf5a496c5ea441', '2024-08-18 03:47:47', '2024-08-18 00:47:47'),
-(11, 'lorenzorpiovesan@hotmail.com', '3d3fb05e26dc2188dcee300acfa58298751ea3d7f87fca5aa03665c5d26e32ed536e6e76f36385be55b1916dcbf0b66ceb14', '2024-08-18 03:51:44', '2024-08-18 00:51:44'),
-(12, 'lorenzorpiovesan@hotmail.com', 'ee1925f5546ade8e09f650948577b8f3d896ab7350a7ff99c07787a569a905c697e73b722338c9ccd97f3cacc31f208da3b8', '2024-08-18 04:00:06', '2024-08-18 01:00:06'),
-(13, 'lorenzorpiovesan@hotmail.com', '2a9fc768ae091e8731e5b5d4d13f04a81fee6b2ba942a84f30f6705ad1410cd510a2aa63b619c0c2015712839c2072b47c0a', '2024-08-18 04:00:12', '2024-08-18 01:00:12'),
-(14, 'lorenzorpiovesan@hotmail.com', 'd5800a1075084489c639ebdd57f8f45ea6cac6c1d80049011282f5671cb64ac3005d2b1563f51b3c822fccf02c7808a69e85', '2024-08-18 04:00:42', '2024-08-18 01:00:42'),
-(15, 'lorenzorpiovesan@hotmail.com', '7ebafc4e8d0efe91b52fcf9c5ee9bd048e2ee85b96ffd715c058ce57242d0f140bc58791eace1af37a444923ee06bd84f0c5', '2024-08-18 04:01:04', '2024-08-18 01:01:04'),
-(16, 'lorenzorpiovesan@hotmail.com', '5013af0fa300d2111f6bd26c9066dff1ffaa7298cabac136853371c3919475d4e6d5ff32e8b90c650a8e5939a171add0c881', '2024-08-18 04:01:09', '2024-08-18 01:01:09');
+(1, 'wictor.2022304991@aluno.iffar.edu.br', '8d0362deb08295232f1d27c95ecae8503bb109837dbbac8cb615dbf67c9132744e151990475da665fc9f050e8d4786b8fb2d', '2024-09-09 14:31:24', '2024-09-09 11:31:24');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `professores`
+-- Estrutura da tabela `professores`
 --
 
 CREATE TABLE `professores` (
@@ -130,56 +120,40 @@ CREATE TABLE `professores` (
   `cpf` varchar(14) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `foto` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `professores`
+-- Extraindo dados da tabela `professores`
 --
 
 INSERT INTO `professores` (`id`, `nome`, `email`, `cpf`, `senha`, `foto`) VALUES
-(1, 'a', 'a@hotmail.com', '452', '2504', 'sapato.jfif'),
-(3, 'afef', 'fea@hotmail.com', '324fe', '$2y$10$ECBtrBF/jW.5yZbsrKvLcej3F18lyiy8yXMQpUXwngyH1V4Div5qK', 'sapato.jfif'),
-(8, 'a', 'yua@hotmail.com', '456', '$2y$10$MOBOkquUeJI0OYoPP4dMSe6cECuE38ESD96GdV3XsConR7xe7u8Cu', NULL),
-(9, 'uioui', 'a345@hotmail.com', '435', '$2y$10$R9X4rr64.ZakLzZVmHf/U.O2FOt4oYVAyET0mf2i0GOKCkM9lgGQi', NULL),
-(10, 'agora', 'agora@hotmail.com', 'agora', '$2y$10$P9ULJxEwCWrPQyADExcyp.lJWZsLi4oNq6TKC8WOhbYnYmIYx21Vi', NULL);
+(16, 'Professor', 'professor@gmail.com', '12345678900', '$2y$10$UJ4KCv5n6.qzWXbMqSn7ROy6lU8wlqUuYgSyCrp7TBzNo95cQbT0G', 'professor12345678900.png'),
+(17, 'wictor', 'wictor.2022304991@aluno.iffar.edu.br', '1234567890', '$2y$10$yPRgOnXrnlRjjo5KDcZ/UuMJwweYKucpQnkLaWviSz1eap.y/sS5S', 'professor1234567890.png');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `professores_disciplinas`
---
-
-CREATE TABLE `professores_disciplinas` (
-  `professor_id` int(11) NOT NULL,
-  `disciplina_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `professor_disciplinas`
+-- Estrutura da tabela `professor_disciplinas`
 --
 
 CREATE TABLE `professor_disciplinas` (
   `id` int(11) NOT NULL,
   `professor_id` int(11) NOT NULL,
   `disciplina_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `professor_disciplinas`
+-- Extraindo dados da tabela `professor_disciplinas`
 --
 
 INSERT INTO `professor_disciplinas` (`id`, `professor_id`, `disciplina_id`) VALUES
-(1, 9, 4),
-(2, 10, 4),
-(3, 10, 6),
-(4, 10, 5);
+(6, 16, 8),
+(7, 17, 6);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `setores`
+-- Estrutura da tabela `setores`
 --
 
 CREATE TABLE `setores` (
@@ -187,13 +161,22 @@ CREATE TABLE `setores` (
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `tipo` enum('CAE','CAI') NOT NULL,
-  `foto` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `foto` varchar(255) DEFAULT NULL,
+  `nome` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `setores`
+--
+
+INSERT INTO `setores` (`id`, `email`, `senha`, `tipo`, `foto`, `nome`) VALUES
+(1, 'setor@hotmail.com', '$2y$10$4vVdEQjADm5HIbj9toH3sOiN4i7oK2mfUrDY5rr7Iho/mhpBKdNYi', '', 'foto/ataca.jpg', 'Setor'),
+(2, 'setor@gmail.com', '$2y$10$Zl3w2ur5r1EYyyJiW5dkU.D5FtzjS4j8NzOYmJfXsZPZ/bQ5JbZUe', '', 'setorimagens/setorsetor@gmail.com.png', 'Setor');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `turmas`
+-- Estrutura da tabela `turmas`
 --
 
 CREATE TABLE `turmas` (
@@ -202,32 +185,33 @@ CREATE TABLE `turmas` (
   `curso_id` int(11) DEFAULT NULL,
   `lider` varchar(100) DEFAULT NULL,
   `regente` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `turmas`
+-- Extraindo dados da tabela `turmas`
 --
 
 INSERT INTO `turmas` (`id`, `nome`, `curso_id`, `lider`, `regente`) VALUES
-(2, 'Turma 14', 4, NULL, NULL),
-(3, 'Turma 24', 4, NULL, NULL),
-(4, 'Turma 34', 4, NULL, NULL);
+(1, 'Turma 34', 1, NULL, NULL),
+(2, 'Turma 24', 1, NULL, NULL),
+(3, 'Turma 14', 1, NULL, NULL),
+(4, 'Turma 25', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `turmas_disciplinas`
+-- Estrutura da tabela `turmas_disciplinas`
 --
 
 CREATE TABLE `turmas_disciplinas` (
   `turma_id` int(11) NOT NULL,
   `disciplina_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -236,23 +220,28 @@ CREATE TABLE `usuarios` (
   `email` varchar(100) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `reset_token` varchar(100) DEFAULT NULL,
-  `reset_expires` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `reset_expires` datetime DEFAULT NULL,
+  `tipo` enum('admin','professor','setor') NOT NULL DEFAULT 'professor',
+  `foto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `username`, `email`, `password_hash`, `reset_token`, `reset_expires`) VALUES
-(1, 'teste', 'lorenzorpiovesan@hotmail.com', '$2y$10$i8a0.YmYf12YD9WN/gBbveuLXeCgzI9w2kUd2q6/P2eD3h/vFLAfu', '6a89f4ea4ac0f33e4ce43be99285ed2e8fdd53c4bca8e8e186d5976a1c2d21c805b32f19fc5ed8450d109182352cc443b092', '2024-08-08 16:59:20'),
-(2, 'teste2', 'a@hotmail.com', '$2y$10$VKB6YXkAgzyY3ckmHgpiAOucJKaumGPb4QbZsKRhvgQRwsA22q83.', 'cc0ae63ba28c3e8c6a32ac409158d77c8f0ef3d291717bc5b3b8f6a44b747e592c08e588fa9f1cb9e49ce555b3f8ca242c8b', '2024-08-18 01:55:39');
+INSERT INTO `usuarios` (`id`, `username`, `email`, `password_hash`, `reset_token`, `reset_expires`, `tipo`, `foto`) VALUES
+(1, 'admin', 'admin@admin.com', '$2y$10$6DjR1QwDk8aPm.Rvue1xwO405DlRhx66c0rxAnCHxgZAJ6PIuWvKu', NULL, NULL, 'admin', NULL),
+(4, 'Felipe', 'felipe.2022303250@aluno.iffar.edu.br', '$2y$10$Kx/KUnxnpLUyEdoXFhkPs.QowG21uUwDseEVKBzb5GNaXZReNsJcy', NULL, NULL, 'admin', 'adminsfotos/usuarios.png'),
+(5, 'Professor', 'professor@gmail.com', '$2y$10$UJ4KCv5n6.qzWXbMqSn7ROy6lU8wlqUuYgSyCrp7TBzNo95cQbT0G', NULL, NULL, 'professor', NULL),
+(6, 'Setor', 'setor@gmail.com', '$2y$10$Zl3w2ur5r1EYyyJiW5dkU.D5FtzjS4j8NzOYmJfXsZPZ/bQ5JbZUe', NULL, NULL, 'setor', NULL),
+(7, 'wictor', 'wictor.2022304991@aluno.iffar.edu.br', '$2y$10$yPRgOnXrnlRjjo5KDcZ/UuMJwweYKucpQnkLaWviSz1eap.y/sS5S', NULL, NULL, 'professor', NULL);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `alunos`
+-- Índices para tabela `alunos`
 --
 ALTER TABLE `alunos`
   ADD PRIMARY KEY (`id`),
@@ -262,25 +251,27 @@ ALTER TABLE `alunos`
   ADD KEY `turma_id` (`turma_id`);
 
 --
--- Índices de tabela `cursos`
+-- Índices para tabela `cursos`
 --
 ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `disciplinas`
+-- Índices para tabela `disciplinas`
 --
 ALTER TABLE `disciplinas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `turma_id` (`turma_id`);
 
 --
--- Índices de tabela `password_resets`
+-- Índices para tabela `password_resets`
 --
 ALTER TABLE `password_resets`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `token` (`token`);
 
 --
--- Índices de tabela `professores`
+-- Índices para tabela `professores`
 --
 ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`),
@@ -288,14 +279,7 @@ ALTER TABLE `professores`
   ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices de tabela `professores_disciplinas`
---
-ALTER TABLE `professores_disciplinas`
-  ADD PRIMARY KEY (`professor_id`,`disciplina_id`),
-  ADD KEY `disciplina_id` (`disciplina_id`);
-
---
--- Índices de tabela `professor_disciplinas`
+-- Índices para tabela `professor_disciplinas`
 --
 ALTER TABLE `professor_disciplinas`
   ADD PRIMARY KEY (`id`),
@@ -303,34 +287,35 @@ ALTER TABLE `professor_disciplinas`
   ADD KEY `disciplina_id` (`disciplina_id`);
 
 --
--- Índices de tabela `setores`
+-- Índices para tabela `setores`
 --
 ALTER TABLE `setores`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices de tabela `turmas`
+-- Índices para tabela `turmas`
 --
 ALTER TABLE `turmas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `curso_id` (`curso_id`);
 
 --
--- Índices de tabela `turmas_disciplinas`
+-- Índices para tabela `turmas_disciplinas`
 --
 ALTER TABLE `turmas_disciplinas`
   ADD PRIMARY KEY (`turma_id`,`disciplina_id`),
   ADD KEY `disciplina_id` (`disciplina_id`);
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -343,37 +328,37 @@ ALTER TABLE `alunos`
 -- AUTO_INCREMENT de tabela `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `disciplinas`
 --
 ALTER TABLE `disciplinas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `professor_disciplinas`
 --
 ALTER TABLE `professor_disciplinas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `setores`
 --
 ALTER TABLE `setores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `turmas`
@@ -385,40 +370,33 @@ ALTER TABLE `turmas`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `alunos`
+-- Limitadores para a tabela `alunos`
 --
 ALTER TABLE `alunos`
-  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`);
+  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Restrições para tabelas `professores_disciplinas`
---
-ALTER TABLE `professores_disciplinas`
-  ADD CONSTRAINT `professores_disciplinas_ibfk_1` FOREIGN KEY (`professor_id`) REFERENCES `professores` (`id`),
-  ADD CONSTRAINT `professores_disciplinas_ibfk_2` FOREIGN KEY (`disciplina_id`) REFERENCES `disciplinas` (`id`);
-
---
--- Restrições para tabelas `professor_disciplinas`
+-- Limitadores para a tabela `professor_disciplinas`
 --
 ALTER TABLE `professor_disciplinas`
-  ADD CONSTRAINT `professor_disciplinas_ibfk_1` FOREIGN KEY (`professor_id`) REFERENCES `professores` (`id`),
+  ADD CONSTRAINT `professor_disciplinas_ibfk_1` FOREIGN KEY (`professor_id`) REFERENCES `professores` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `professor_disciplinas_ibfk_2` FOREIGN KEY (`disciplina_id`) REFERENCES `disciplinas` (`id`);
 
 --
--- Restrições para tabelas `turmas`
+-- Limitadores para a tabela `turmas`
 --
 ALTER TABLE `turmas`
   ADD CONSTRAINT `turmas_ibfk_1` FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id`);
 
 --
--- Restrições para tabelas `turmas_disciplinas`
+-- Limitadores para a tabela `turmas_disciplinas`
 --
 ALTER TABLE `turmas_disciplinas`
   ADD CONSTRAINT `turmas_disciplinas_ibfk_1` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`),
